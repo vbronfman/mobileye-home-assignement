@@ -79,9 +79,14 @@ collected 16 items
 
 ## Implementation notes
 
+### Backend _gitlab_calls.py_
 - Role mapping: guest..owner -> access levels (10..50)
 - grant_user_role: finds user id, determines project vs group, attempts PUT to update member, falls back to POST on 404
 - get_items_by_year: validates year, queries GitLab with created_after/created_before, handles pagination
+
+### Frontend _api.py_
+- FastAPI
+- Exposes hardcoded URI 0.0.0.0:8000 - for simplicity sake only, not production ready. 
 
 ### Dockerfile
 - initial Dockerfile created with 'docker init' and tuned thoroughly with help of 'docker compose'. 
@@ -96,7 +101,7 @@ collected 16 items
 
 ## Acknowledgments
 
-I would like to sincerely thank [Nicola Pavlov](Nicola Pavlov) for providing detailed requirements and invaluable guidance in setting up the development environment. This support greatly facilitated the development of this project.
+I would like to sincerely thank **[Nicola Pavlov](Nicola Pavlov)** for providing detailed requirements and invaluable guidance in setting up the development environment. This support greatly facilitated the development of this project.
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
