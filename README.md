@@ -39,14 +39,14 @@ docker build -t gitlab-api-service .
 Run:
 ``` 
 docker run -d -p 8000:8000 `
-  -e GITLAB_URL="https://gitlab.example.com" `
+  -e GITLAB_URL="http://http://host.docker.internal:8080" `
   -e GITLAB_TOKEN="glpat_xxx" `
   gitlab-api-service
 ```
 
 ## TEST
 Run tests from project root to avoid import errors:
-```powershell
+``` 
 cd /d j:\Develop\Mobileye_Home_Assignment
 python -m pytest -q
 ```
@@ -54,6 +54,22 @@ Notes:
 - tests/app_test.py is integration-style and expects the FastAPI service available at BASE_URL (default http://localhost:8000).
 - Unit tests for gitlab_calls can be run without a running service and typically mock requests.
 - If pytest raises "attempted relative import with no known parent package", ensure you run pytest from the repository root or set PYTHONPATH=src.
+
+### Service FastAPI
+```
+PS J:\Develop\Mobileye_Home_Assignment\src> uv run --with=pytest --with=requests -m pytest  ..\tests\app_test.py
+========================== test session starts ===========================
+platform win32 -- Python 3.13.7, pytest-8.4.2, pluggy-1.6.0
+rootdir: J:\Develop\Mobileye_Home_Assignment
+configfile: pyproject.toml
+plugins: anyio-4.11.0
+collected 16 items
+
+..\tests\app_test.py ................                               [100%]
+
+=========================== 16 passed in 2.86s =========================== 
+
+```
 
 ## Endpoints
 - GET /health — health check
