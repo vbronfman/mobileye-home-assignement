@@ -62,6 +62,7 @@ Notes:
 - POST /get-items — retrieve merge requests or issues by year (JSON: item_type, year)
 
 ## Implementation notes
+
 - Role mapping: guest..owner -> access levels (10..50)
 - grant_user_role: finds user id, determines project vs group, attempts PUT to update member, falls back to POST on 404
 - get_items_by_year: validates year, queries GitLab with created_after/created_before, handles pagination
@@ -69,11 +70,17 @@ Notes:
 ### Dockerfile
 - initial Dockerfile created with 'docker init' and tuned thoroughly with help of 'docker compose'. 
 - base image of choice is python3:slim instead of 'alpine'. The ground for the choice is 'apk' package manager in 'alpine' which I'm less experienced with.
-- project uses 'uv' to manage dependencies and to run frontend server.
+- project uses 'uv' to manage dependencies and to run frontend server. The choice is to facilitate dependency management with pyproject.toml
+
 
 ## Troubleshooting
 - Run pytest from repository root to fix import issues.
 - Ensure GITLAB_URL and GITLAB_TOKEN are set for integration tests against a real GitLab instance.
 
+
+## Acknowledgments
+
+I would like to sincerely thank [Nicola Pavlov](Nicola Pavlov) for providing detailed requirements and invaluable guidance in setting up the development environment. This support greatly facilitated the development of this project.
+
 ## License
-Add license information here.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
