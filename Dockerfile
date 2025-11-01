@@ -9,7 +9,7 @@ FROM python:3-slim AS base
 WORKDIR /app
 
 # Install uv (via pipx)
-RUN pip install --no-cache-dir uv --target=/usr/local/bin
+RUN pip install --no-cache-dir uv 
  
 
 # Copy dependencies and install via uv
