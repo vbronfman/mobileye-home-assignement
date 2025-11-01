@@ -17,10 +17,10 @@ dependencies = [
 ]
 
 # for airgap environment and in case of custom modules
-[[tool.uv.index]]
-name = "custom"
-url = "https://custom.index/simple"
-default = false
+#[[tool.uv.index]]
+#name = "custom"
+#url = "https://custom.index/simple"
+#default = false
 
 [project.urls]
 Repository = "https://github.com/vbronfman/mobileye-home-assignement/"

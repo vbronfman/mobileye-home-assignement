@@ -10,26 +10,19 @@ WORKDIR /app
 
 # Install uv (via pipx)
 RUN pip install --no-cache-dir uv 
- 
-
-# Copy dependencies and install via uv
-#COPY requirements.txt .
-
-#COPY pyproject.toml .
+  
 COPY . .
+
 # Create virtual environment and install deps via uv
 RUN python -m uv venv && python -m uv sync
 
 #FROM python:3.12-alpine
 
-ENV PORT=${PORT}
 # Copy the rest of the app
-
 #COPY --from=base /app /app
 
-# Copy uv binary from builder (path inside uv image)
-# COPY --from=base /usr/local/bin/uv /usr/local/bin/uv
- 
+ENV PORT=${PORT} 
+
 # Expose the port that the application listens on. #TODO: replace with variable
 EXPOSE ${PORT}
 
